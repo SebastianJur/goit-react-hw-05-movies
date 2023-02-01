@@ -12,7 +12,6 @@ export const MovieDetails = () => {
   const date = new Date(movie.release_date);
 
   const releaseDate = date.getFullYear();
-  const image = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
 
   const goBackLinkHref = location.state?.from ?? '/';
   
@@ -37,9 +36,17 @@ export const MovieDetails = () => {
           {movie.title} ({releaseDate})
         </h2>
         <h3>Vote average: {movie.vote_average} ⭐</h3>
-        <img className={css.image} src={image} alt={movie.title} />
+        <img
+          className={css.image}
+          src={
+            movie.poster_path
+              ? `https://www.themoviedb.org/t/p/w220_and_h330_face${movie.poster_path}`
+              : `https://via.placeholder.com/220x330?text=Theres+no+photo`
+          }
+          alt={movie.title}
+        />
         <h3>Overview: </h3>
-        <p>{movie.overview}</p>
+        <p className={css.overview}>{movie.overview}</p>
         <h3>Genres</h3>
         <p>{movieCategories} </p>
         <hr />
