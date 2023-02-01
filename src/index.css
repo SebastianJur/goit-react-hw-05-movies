@@ -13,3 +13,47 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.App {
+  max-width: 1200px;
+  padding: 10px 40px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  font-size: 40;
+  color: #010101;
+}
+
+.h1 {
+  text-align: center;
+  margin: 0;
+}
+
+.navLink {
+  padding: 7px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+}
+
+.navLink.active {
+  color: rgb(255, 255, 255);
+  background-color: #f96801;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 0;
+  margin-bottom: 16px;
+  border-radius: 5px;
+  border-bottom: 1px solid black;
+  background-color: rgb(208, 255, 0);
+}
+
+header.nav {
+  display: flex;
+}
