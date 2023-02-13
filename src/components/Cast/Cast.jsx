@@ -1,17 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { nanoid } from 'nanoid';
 import { fetchCast } from '../../services/Api.js';
 
 
 export const Cast = () => {
   const { movieId } = useParams();
   const [movieCast, setMovieCast] = useState([]);
-
-  const createId = () => {
-    const id = nanoid();
-    return id;
-  };
 
   useEffect(() => {
     const getCast = async () => {
@@ -26,10 +20,14 @@ export const Cast = () => {
       <h2>Cast</h2>
       <ul>
         {movieCast.map(cast => (
-          <li key={createId()} style={{ listStyle: 'none' }}>
+          <li key={cast.id} style={{ listStyle: 'none' }}>
             <img
               style={{ width: '200px', border: '1px solid' }}
-              src={cast.profile_path ? `https://image.tmdb.org/t/p/w500/${cast.profile_path}` : `https://via.placeholder.com/220x330?text=Theres+no+photo`}
+              src={
+                cast.profile_path
+                  ? `https://image.tmdb.org/t/p/w500/${cast.profile_path}`
+                  : `https://via.placeholder.com/220x330?text=Theres+no+photo`
+              }
               alt={`${cast.name}'s portrait`}
             />
             <p>{cast.name}</p>

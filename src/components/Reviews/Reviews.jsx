@@ -1,16 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchReviews } from '../../services/Api.js';
-import { nanoid } from 'nanoid';
 
 export const Reviews = () => {
   const { movieId } = useParams();
   const [movieReviews, setMovieReviews] = useState([]);
-
-  const createId = () => {
-    const idReview = nanoid();
-    return idReview;
-  };
 
   useEffect(() => {
     const getReviews = async () => {
@@ -30,7 +24,7 @@ export const Reviews = () => {
       ) : (
         <ul>
           {movieReviews.map(review => (
-            <li key={createId()}>
+            <li key={review.id}>
               <h3>author: {review.author}</h3>
               <p>{review.content}</p>
             </li>

@@ -1,10 +1,14 @@
 import axios from 'axios';
-let ApiKey = '97d70a3173ca56d5850cad3599f6b1e5';
+const API_KEY = '97d70a3173ca56d5850cad3599f6b1e5';
+const BASE_URL = 'https://api.themoviedb.org/3';
+
+axios.defaults.baseURL = BASE_URL;
 
 export const fetchTrending = async () => {
-  const URL = `https://api.themoviedb.org/3/trending/movie/day?api_key=${ApiKey}&page=1`;
   try {
-    const response = await axios.get(`${URL}`);
+    const response = await axios.get(
+      `/trending/movie/day?api_key=${API_KEY}&page=1`
+    );
     return response.data;
   } catch (error) {
     console.error(error);
@@ -12,9 +16,10 @@ export const fetchTrending = async () => {
 };
 
 export const fetchDetails = async movieId => {
-  const URL = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${ApiKey}&page=1`;
   try {
-    const response = await axios.get(`${URL}`);
+    const response = await axios.get(
+      `/movie/${movieId}?api_key=${API_KEY}&page=1`
+    );
     return response.data;
   } catch (error) {
     console.error(error);
@@ -22,9 +27,10 @@ export const fetchDetails = async movieId => {
 };
 
 export const fetchCast = async movieId => {
-  const URL = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${ApiKey}&page=1`;
   try {
-    const response = await axios.get(`${URL}`);
+    const response = await axios.get(
+      `/movie/${movieId}/credits?api_key=${API_KEY}&page=1`
+    );
     return response.data;
   } catch (error) {
     console.error(error);
@@ -32,9 +38,10 @@ export const fetchCast = async movieId => {
 };
 
 export const fetchReviews = async movieId => {
-  const URL = `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=${ApiKey}&page=1`;
   try {
-    const response = await axios.get(`${URL}`);
+    const response = await axios.get(
+      `/movie/${movieId}/reviews?api_key=${API_KEY}&page=1`
+    );
     return response.data.results;
   } catch (error) {
     console.error(error);
@@ -42,9 +49,10 @@ export const fetchReviews = async movieId => {
 };
 
 export const fetchSearch = async query => {
-  const URL = `https://api.themoviedb.org/3/search/movie?api_key=${ApiKey}&query=${query}`;
   try {
-    const response = await axios.get(`${URL}`);
+    const response = await axios.get(
+      `/search/movie?api_key=${API_KEY}&query=${query}`
+    );
     return response.data.results;
   } catch (error) {
     console.error(error);

@@ -8,7 +8,7 @@ export const MovieDetails = () => {
   const [movieCategories, setMovieCategories] = useState('');
   const { movieId } = useParams();
 
-  let location = useLocation();
+  const location = useLocation();
   const date = new Date(movie.release_date);
 
   const releaseDate = date.getFullYear();
